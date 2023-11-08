@@ -3,7 +3,17 @@ require('dotenv').config()
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-  solidity: "0.8.17",
+  solidity: {
+    version: "0.8.17",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 100,
+      },
+      viaIR: true,
+    },
+  },
+  
   networks: {
     goerli: {
       url: process.env.ALCHEMY_GOERLI_URL,

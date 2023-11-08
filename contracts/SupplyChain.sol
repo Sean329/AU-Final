@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
-import "../coffeeaccesscontrol/ConsumerRole.sol";
-import "../coffeeaccesscontrol/DistributorRole.sol";
-import "../coffeeaccesscontrol/FarmerRole.sol";
-import "../coffeeaccesscontrol/RetailerRole.sol";
+import "./ConsumerRole.sol";
+import "./DistributorRole.sol";
+import "./FarmerRole.sol";
+import "./RetailerRole.sol";
 
 
 // Define a contract 'Supplychain'
@@ -93,7 +93,7 @@ contract SupplyChain is ConsumerRole, RetailerRole, DistributorRole, FarmerRole 
     _;
     uint _price = items[_upc].productPrice;
     uint amountToReturn = msg.value - _price;
-    items[_upc].consumerID.transfer(amountToReturn);
+    payable(items[_upc].consumerID).transfer(amountToReturn);
   }
 
   // Define a modifier that checks if an item.state of a upc is Harvested
@@ -147,7 +147,7 @@ contract SupplyChain is ConsumerRole, RetailerRole, DistributorRole, FarmerRole 
   // In the constructor set 'owner' to the address that instantiated the contract
   // and set 'sku' to 1
   // and set 'upc' to 1
-  constructor() public payable {
+  constructor() payable {
     owner = msg.sender;
     sku = 1;
     upc = 1;
@@ -156,12 +156,12 @@ contract SupplyChain is ConsumerRole, RetailerRole, DistributorRole, FarmerRole 
   // Define a function 'kill' if required
   function kill() public {
     if (msg.sender == owner) {
-      selfdestruct(owner);
+      selfdestruct(payable(owner));
     }
   }
 
   // Define a function 'harvestItem' that allows a farmer to mark an item 'Harvested'
-  function harvestItem(uint _upc, address _originFarmerID, string _originFarmName, string _originFarmInformation, string  _originFarmLatitude, string  _originFarmLongitude, string  _productNotes) public 
+  function harvestItem(uint _upc, address _originFarmerID, string calldata _originFarmName, string calldata _originFarmInformation, string calldata _originFarmLatitude, string  calldata _originFarmLongitude, string  calldata _productNotes) public 
   {
     // Add the new item as part of Harvest
     items[_upc].sku = sku;
@@ -238,7 +238,7 @@ contract SupplyChain is ConsumerRole, RetailerRole, DistributorRole, FarmerRole 
     items[_upc].distributorID = msg.sender;
     items[_upc].itemState = State.Sold;
     // Transfer money to farmer
-    items[_upc].originFarmerID.transfer(items[_upc].productPrice);
+    payable(items[_upc].originFarmerID).transfer(items[_upc].productPrice);
     // emit the appropriate event
     emit Sold(_upc);
   }
@@ -296,10 +296,10 @@ contract SupplyChain is ConsumerRole, RetailerRole, DistributorRole, FarmerRole 
   uint    itemUPC,
   address ownerID,
   address originFarmerID,
-  string  originFarmName,
-  string  originFarmInformation,
-  string  originFarmLatitude,
-  string  originFarmLongitude
+  string  memory originFarmName,
+  string  memory originFarmInformation,
+  string  memory originFarmLatitude,
+  string  memory originFarmLongitude
   ) 
   {
   // Assign values to the 8 parameters
@@ -331,7 +331,7 @@ contract SupplyChain is ConsumerRole, RetailerRole, DistributorRole, FarmerRole 
   uint    itemSKU,
   uint    itemUPC,
   uint    productID,
-  string  productNotes,
+  string  memory productNotes,
   uint    productPrice,
   uint    itemState,
   address distributorID,
