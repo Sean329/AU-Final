@@ -11,7 +11,7 @@ import "./RetailerRole.sol";
 contract SupplyChain is ConsumerRole, RetailerRole, DistributorRole, FarmerRole {
 
   // Define 'owner'
-  address owner;
+  address public owner;
 
   // Define a variable called 'upc' for Universal Product Code (UPC)
   uint  upc;
