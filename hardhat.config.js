@@ -10,7 +10,7 @@ module.exports = {
         enabled: true,
         runs: 100,
       },
-      viaIR: true,
+      // viaIR: true,
     },
   },
   
