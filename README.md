@@ -16,7 +16,7 @@ This is a DApp supply chain solution backed by the Ethereum L1. The smart contra
 
 
 ### Classes(Data Model)
-![Classes](https://github.com/Sean329/AU-Final/blob/55fad79a6edc6dbe4840a9a1281145f198a8f9e7/UMLs/Classes.png)
+![Classes](https://github.com/Sean329/AU-Final/blob/dfea4432932a02aba054301213145d1b4daeb01d/UMLs/Classes.png)
 
 
 ## Libraries Write-up
