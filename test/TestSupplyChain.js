@@ -61,4 +61,34 @@ describe('SupplyChain', function(){
         assert.equal(resultBufferOne[7], originFarmLongitude, 'Error: Missing or Invalid originFarmLongitude')
         assert.equal(resultBufferTwo[5], 0, 'Error: Invalid item State')      
     })   
+
+    it("Testing smart contract function processItem() that allows a farmer to process coffee", async() => {
+        
+        // Mark an item as Processed by calling function processtItem()
+        var event = await supplyChain.connect(originFarmerID).processItem(upc)
+
+        // Determine if the event has been emitted using `expect`
+        expect(event).to.emit(supplyChain,'Processed');
+
+        // Retrieve the just now saved item from blockchain by calling function fetchItem()
+        const resultBufferTwo = await supplyChain.fetchItemBufferTwo(upc)
+
+        // Verify the result set
+        assert.equal(resultBufferTwo[5], 1, 'Error: Invalid item State')
+
+    })
+
+    it("Testing smart contract function packItem() that allows a farmer to pack coffee", async() => {
+        // Mark an item as Packed by calling function packItem()
+        var event = await supplyChain.connect(originFarmerID).packItem(upc)
+
+        // Determine if the event has been emitted using `expect`
+        expect(event).to.emit(supplyChain, 'Packed')
+
+        // Retrieve the just now saved item from blockchain by calling function fetchItem()
+        const resultBufferTwo = await supplyChain.fetchItemBufferTwo(upc)
+
+        // Verify the result set
+        assert.equal(resultBufferTwo[5], 2, 'Error: Invalid item State')
+    })
 });
