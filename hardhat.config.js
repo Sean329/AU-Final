@@ -18,6 +18,10 @@ module.exports = {
     goerli: {
       url: process.env.ALCHEMY_GOERLI_URL,
       accounts: [process.env.GOERLI_PRIVATE_KEY]
+    },
+    sepolia: {
+      url: process.env.ALCHEMY_SEPOLIA_URL,
+      accounts: [process.env.SEPOLIA_PRIVATE_KEY]
     }
   },
   etherscan: {

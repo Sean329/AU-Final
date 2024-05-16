@@ -1,7 +1,7 @@
 const hre = require("hardhat");
 
 async function main() {
-  const supplyChainAddr = '0x4e129C663310777deCBa8e137892e7967C0fD877';  
+  const supplyChainAddr = '0x24F0F9E40FB78d9c72D35a48D9Af67586Bc2cc65';  
   const supplyChain = await hre.ethers.getContractAt("SupplyChain", supplyChainAddr);
 
   const owner = await supplyChain.owner()

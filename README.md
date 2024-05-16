@@ -40,4 +40,8 @@ The build of the Dapp has 5 steps:
 - Part 5 - TODO: Build the frontend
 
 ## Deploy the contract on public blockchain
-The SupplyChain contract address on Goerli is ```0x4e129c663310777decba8e137892e7967c0fd877``` at transaction hash ``` 0x3b8ae61c50ca488037ec7808a033cb25e4694404a618507fd0a48424b0b1adb9```. The deployed contracts have been verified with source code.
+The SupplyChain contract addresses
+1. On Goerli it is `0x4e129c663310777decba8e137892e7967c0fd877` at transaction hash `0x3b8ae61c50ca488037ec7808a033cb25e4694404a618507fd0a48424b0b1adb9` 
+2. On Sepolia it is `0x24F0F9E40FB78d9c72D35a48D9Af67586Bc2cc65` at transaction hash `0x3b301328e1b8ae582dd3e01d267b30c60c77e6971e1511810e6529a9e63335c4`
+
+The deployed contracts have been verified with source code.
