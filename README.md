@@ -1,5 +1,5 @@
 # AU Final Project --- A Supply Chain Management Tool on the Blockchain
-This is a DApp supply chain solution backed by the Ethereum L1. The smart contracts can manage specific user permission controls as well as track and verify a product’s authenticity. The contracts have been tested, and deployed to Goerli public chain.
+This is a DApp supply chain solution backed by the Ethereum L1. The smart contracts can manage specific user permission controls as well as track and verify a product’s authenticity. The contracts have been tested, and deployed to Goerli and Sepolia public testnets.
 
 ## UML Diagrams
 
